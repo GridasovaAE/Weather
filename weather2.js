@@ -8,7 +8,7 @@ document.getElementById('getWeatherBtn').addEventListener('click', function () {
 });
 function getWeather(city) {
     var apiKey = '0aa084f157fd8b5483fd317062cd3028';
-    var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=de`;
+    var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=en`;
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -19,7 +19,7 @@ function getWeather(city) {
         .then(data => {
             if (data.cod === 200) {
                 document.getElementById('cityName').textContent = data.name;
-                document.getElementById('temperature').textContent = `Temperatur: ${data.main.temp}°C`;
+                document.getElementById('temperature').textContent = `Temperature: ${data.main.temp.toFixed(0)}°C`;
                 document.getElementById('weatherDescription').textContent = data.weather[0].description;
                 var iconCode = data.weather[0].icon;
                 var iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
@@ -40,31 +40,31 @@ function getWeather(city) {
 
 
 function wind(weatherData) {
-    let windDegree = weatherData.wind.deg;
-    let windDirection = "";
+    let windDegree =  weatherData.wind.deg;
+    let windDirection = " ";
     if (windDegree === 0) {
-        windDirection = "N";
+        windDirection = "Wind direction: N";
     } else if (windDegree === 90) {
-        windDirection = "E";
+        windDirection = "Wind direction: E";
     } else if (windDegree === 180) {
-        windDirection = "S";
+        windDirection = "Wind direction: S";
     } else if (windDegree === 270) {
-        windDirection = "W";
+        windDirection = "Wind direction: W";
     } else if (windDegree > 0 && windDegree < 90) {
-        windDirection = "N-E";
+        windDirection = "Wind direction: N-E";
     } else if (windDegree > 90 && windDegree < 180) {
-        windDirection = "S-E";
+        windDirection = "Wind direction: S-E";
     } else if (windDegree > 180 && windDegree < 270) {
-        windDirection = "S-W";
+        windDirection = "Wind direction: S-W";
     } else {
-        windDirection = "N-W";
+        windDirection = "Wind direction: N-W";
     }
 
     const li = document.getElementById("windDir");
     li.innerHTML = windDirection;
     let windSpeed = weatherData.wind.speed;
     const li1 = document.getElementById("windSpeed");
-    li1.innerHTML = windSpeed + " m/s";
+    li1.innerHTML = "Wind speed: " + windSpeed + " m/s";
 }
 
 function addInfo(weatherData) {
@@ -91,11 +91,11 @@ function addInfo(weatherData) {
     const li6 = document.getElementById("Additional-information4");
     const li7 = document.getElementById("Additional-information5");
 
-    li3.innerHTML = addInfo1 + " gPa";
-    li4.innerHTML = addInfo2 + " %";
-    li5.innerHTML = sunriseHours + " : " + sunriseMinutes;
-    li6.innerHTML = sunsetHours + " : " + sunsetMinutes;
-    li7.innerHTML = addInfo5 + " m";
+    li3.innerHTML = "Pressure: " + addInfo1 + " gPa";
+    li4.innerHTML = "Humidity: " + addInfo2 + " %";
+    li5.innerHTML = "Sunrise: " + sunriseHours + " : " + sunriseMinutes;
+    li6.innerHTML = "Sunset: " + sunsetHours + " : " + sunsetMinutes;
+    li7.innerHTML = "Visibility: " + addInfo5 + " m";
 
     
 }

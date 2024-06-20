@@ -111,7 +111,7 @@ a:hover {
 
 .top-container {
     position: relative;
-    background-color: #EAF6F6;
+    background-color: #c4e9e9;
     padding-top: 30px;
 
 }
@@ -123,6 +123,11 @@ a:hover {
     top: 40px;
 }
 
+.bottom-cloud {
+    position: absolute;
+    left: 10%;
+    top: 840px;
+}
 
 
 
