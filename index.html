@@ -20,13 +20,21 @@
     <div class="top-container">
         <img class="top-cloud" src="Images/cloud.png" alt="cloud-img">
         <h1>Your Weather</h1>
-        <h2 id="city">hsheli</h2>
+        <!-- <h2 id="city">hsheli</h2> -->
+
+        <input type="text" id="cityInput" placeholder="Stadt eingeben" />
+        <button id="getWeatherBtn">Wetter anzeigen</button>
+
         <div class="parentContainer">
             <div class="tempBox">
-                <img class="pic" src="https://cdn.pixabay.com/photo/2013/07/13/12/12/sun-159392_1280.png" alt="sun">
                 
-                    <p id="temp">17 C</p>
-                    <p id="skyCondition">nfkwf</p>
+                <img id="weatherIcon" src="" alt="Wetter Icon" style="display: none" />
+                <div id="weatherDisplay" class="weather-display">
+                    <h2 id="cityName"></h2>
+                    <p id="temperature"></p>
+                    <p id="weatherDescription"></p>
+                   
+                  </div>
                
             </div>
             <div class="windBox">
@@ -36,13 +44,18 @@
                 
                     <p id="windDir">hkfh</p>
                     <p id="windSpeed">vdg</p>
-                
-
-
-
+        
             </div>
 
         </div>
+
+
+        <!-- <div class="container">
+          
+           
+          </div> -->
+
+
         <button class="collapsible"><h2>Additional information:</h2></button>
         
         <div class="content">
@@ -59,6 +72,8 @@
 
 
         <script src="weather.js"></script>
+        <script src="weather2.js"></script>
+
 
 
 
